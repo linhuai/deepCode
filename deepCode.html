@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>deepCode</title>
+</head>
+<body>
+<script type="text/javascript">
+function deepClone( obj ) {
+	let buf;
+	if ( obj instanceof Array ) {
+		buf = [];
+		let len = obj.length;
+		while(len--) {
+			buf[len] = deepClone(obj[len]);
+		}
+		return buf;
+	} else if ( obj instanceof Function ) {
+		return obj;
+	} else if ( obj instanceof Object ) {
+		buf = {};
+		for( let k in obj ) {
+			buf[k] = deepClone(obj[k]);
+		}
+		return buf;
+	} 
+
+	return obj;
+}
+
+</script>
+</body>
+</html>
